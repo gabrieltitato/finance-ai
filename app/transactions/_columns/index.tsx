@@ -1,13 +1,14 @@
 "use client";
 
+import { Transaction } from "@prisma/client";
+import { ColumnDef } from "@tanstack/react-table";
+import TransactionTypeBadge from "../_components/type-badge";
 import { Button } from "@/app/_components/ui/button";
+import { TrashIcon } from "lucide-react";
 import {
   TRANSACTION_CATEGORY_LABELS,
   TRANSACTION_PAYMENT_METHOD_LABELS,
 } from "@/app/_constants/transactions";
-import { Transaction, TransactionType } from "@prisma/client";
-import { ColumnDef } from "@tanstack/react-table";
-import { CircleIcon, TrashIcon } from "lucide-react";
 import EditTransactionButton from "../_components/edit-transaction-button";
 
 export const transactionColumns: ColumnDef<Transaction>[] = [
@@ -18,30 +19,9 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "type",
     header: "Tipo",
-    cell: ({ row: { original: transaction } }) => {
-      if (transaction.type === TransactionType.DEPOSIT) {
-        return (
-          <div className="inline-flex max-w-32 items-center justify-center rounded-full bg-muted p-1 hover:bg-muted">
-            <CircleIcon className="mr-2 size-3 fill-primary text-primary" />{" "}
-            <p className="font-bold text-primary">Depósito</p>
-          </div>
-        );
-      }
-      if (transaction.type === TransactionType.EXPENSE) {
-        return (
-          <div className="inline-flex max-w-32 items-center justify-center rounded-full bg-muted p-1 hover:bg-muted">
-            <CircleIcon className="mr-2 size-3 fill-danger text-danger" />
-            <p className="font-bold text-danger">Despesa</p>
-          </div>
-        );
-      }
-      return (
-        <div className="inline-flex max-w-32 items-center justify-center rounded-full bg-muted p-1 hover:bg-muted">
-          <CircleIcon className="mr-2 size-3 fill-white text-white" />{" "}
-          <p className="font-bold text-white">Investimento</p>
-        </div>
-      );
-    },
+    cell: ({ row: { original: transaction } }) => (
+      <TransactionTypeBadge transaction={transaction} />
+    ),
   },
   {
     accessorKey: "category",
@@ -81,11 +61,7 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
       return (
         <div className="space-x-1">
           <EditTransactionButton transaction={transaction} />
-          <Button
-            variant={"ghost"}
-            size={"icon"}
-            className="text-muted-foreground"
-          >
+          <Button variant="ghost" size="icon" className="text-muted-foreground">
             <TrashIcon />
           </Button>
         </div>
