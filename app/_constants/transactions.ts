@@ -17,7 +17,7 @@ export const TRANSACTION_CATEGORY_LABELS = {
 };
 
 export const TRANSACTION_PAYMENT_METHOD_LABELS = {
-  BANK_TRANSFER: "Transaferência Bancária",
+  BANK_TRANSFER: "Transferência Bancária",
   BANK_SLIP: "Boleto Bancário",
   CASH: "Dinheiro",
   CREDIT_CARD: "Cartão de Crédito",
@@ -41,16 +41,16 @@ export const TRANSACTION_TYPE_OPTIONS = [
   },
 ];
 
-export const PAYMENT_METHOD_LABELS = [
-  {
-    value: TransactionPaymentMethod.BANK_SLIP,
-    label:
-      TRANSACTION_PAYMENT_METHOD_LABELS[TransactionPaymentMethod.BANK_SLIP],
-  },
+export const TRANSACTION_PAYMENT_METHOD_OPTIONS = [
   {
     value: TransactionPaymentMethod.BANK_TRANSFER,
     label:
       TRANSACTION_PAYMENT_METHOD_LABELS[TransactionPaymentMethod.BANK_TRANSFER],
+  },
+  {
+    value: TransactionPaymentMethod.BANK_SLIP,
+    label:
+      TRANSACTION_PAYMENT_METHOD_LABELS[TransactionPaymentMethod.BANK_SLIP],
   },
   {
     value: TransactionPaymentMethod.CASH,
@@ -67,16 +67,16 @@ export const PAYMENT_METHOD_LABELS = [
       TRANSACTION_PAYMENT_METHOD_LABELS[TransactionPaymentMethod.DEBIT_CARD],
   },
   {
-    value: TransactionPaymentMethod.PIX,
-    label: TRANSACTION_PAYMENT_METHOD_LABELS[TransactionPaymentMethod.PIX],
-  },
-  {
     value: TransactionPaymentMethod.OTHER,
     label: TRANSACTION_PAYMENT_METHOD_LABELS[TransactionPaymentMethod.OTHER],
   },
+  {
+    value: TransactionPaymentMethod.PIX,
+    label: TRANSACTION_PAYMENT_METHOD_LABELS[TransactionPaymentMethod.PIX],
+  },
 ];
 
-export const CATEGORY_OPTIONS_LABEL = [
+export const TRANSACTION_CATEGORY_OPTIONS = [
   {
     value: TransactionCategory.EDUCATION,
     label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.EDUCATION],
@@ -98,6 +98,10 @@ export const CATEGORY_OPTIONS_LABEL = [
     label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.HOUSING],
   },
   {
+    value: TransactionCategory.OTHER,
+    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.OTHER],
+  },
+  {
     value: TransactionCategory.SALARY,
     label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.SALARY],
   },
@@ -108,9 +112,5 @@ export const CATEGORY_OPTIONS_LABEL = [
   {
     value: TransactionCategory.UTILITY,
     label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.UTILITY],
-  },
-  {
-    value: TransactionCategory.OTHER,
-    label: TRANSACTION_CATEGORY_LABELS[TransactionCategory.OTHER],
   },
 ];
